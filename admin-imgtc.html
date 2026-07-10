@@ -611,7 +611,7 @@
         const imgExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg', 'avif', 'ico', 'tiff', 'jfif'];
         const ext = name.split('.').pop().toLowerCase();
         return imgExts.includes(ext)
-          ? `https://wsrv.nl/?url=${document.location.host}/file/${name}&output=webp&q=80`
+          ? `https://wsrv.nl/?url=${document.location.host}/file/${name}&output=webp&q=80&w=1920&h=1080&fit=inside&we=1`
           : `${this.baseURL}/file/${name}`;
       },
       handleCopy(index, key) {

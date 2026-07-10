@@ -212,7 +212,7 @@
         const imgExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg', 'avif', 'ico', 'tiff', 'jfif'];
         const ext = key.split('.').pop().toLowerCase();
         const text = imgExts.includes(ext)
-          ? `https://wsrv.nl/?url=${document.location.host}/file/${key}&output=webp&q=80`
+          ? `https://wsrv.nl/?url=${document.location.host}/file/${key}&output=webp&q=80&w=1920&h=1080&fit=inside&we=1`
           : `${document.location.origin}/file/${key}`;
         if (navigator.clipboard) {
           // clipboard api 复制
