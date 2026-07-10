@@ -63,8 +63,17 @@ export async function onRequestPost(context) {
             });
         }
 
+        const filePath = `/file/${fileId}.${fileExtension}`;
+
+        // 图片链接套一层 wsrv.nl 代理壳，强制转换为 WebP 并压缩到 80% 质量
+        let src = filePath;
+        if (uploadFile.type.startsWith('image/')) {
+            const host = new URL(request.url).host;
+            src = `https://wsrv.nl/?url=${host}${filePath}&output=webp&q=80`;
+        }
+
         return new Response(
-            JSON.stringify([{ 'src': `/file/${fileId}.${fileExtension}` }]),
+            JSON.stringify([{ 'src': src }]),
             {
                 status: 200,
                 headers: { 'Content-Type': 'application/json' }
