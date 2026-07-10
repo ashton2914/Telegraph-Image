@@ -209,7 +209,11 @@
         window.location.href = "./api/manage/logout";
       },
       handleCopy(index, key) {
-        const text = `${document.location.origin}/file/${key}`;
+        const imgExts = ['png', 'jpg', 'jpeg', 'gif', 'webp', 'bmp', 'svg', 'avif', 'ico', 'tiff', 'jfif'];
+        const ext = key.split('.').pop().toLowerCase();
+        const text = imgExts.includes(ext)
+          ? `https://wsrv.nl/?url=${document.location.host}/file/${key}&output=webp&q=80`
+          : `${document.location.origin}/file/${key}`;
         if (navigator.clipboard) {
           // clipboard api 复制
           navigator.clipboard.writeText(text);
